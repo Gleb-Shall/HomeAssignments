@@ -6,7 +6,7 @@ total: main.o ReversePolishNotation.o
 main.o: main.cpp
 	g++ -c main.cpp
 
-sayhello.o: ReversePolishNotation.cpp
+ReversePolishNotation.o: ReversePolishNotation.cpp
 	g++ -c ReversePolishNotation.cpp
 
 clean:

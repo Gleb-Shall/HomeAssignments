@@ -11,7 +11,7 @@
 #include <string>
 
 
-int NathenaticalOperation(const int &number1, const int &number2, const std::string &oper);
+float MathenaticalOperation(const float &number1, const float &number2, const std::string &oper);
 void ReversePolishNotation();
 
 

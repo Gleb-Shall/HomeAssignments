@@ -8,7 +8,7 @@
 #include "ReversePolishNotation.h"
 
 
-int MathematicalOperation(const int &number1, const int &number2, const std::string &oper)
+float MathematicalOperation(const float &number1, const float &number2, const std::string &oper)
 {
     // determines which operation sign was entered and returns the result of this operation on the two numbers from the top of the stack
     if (oper == "+")
@@ -27,19 +27,20 @@ int MathematicalOperation(const int &number1, const int &number2, const std::str
     {
         return number1 / number2;
     }
+    return 0;
 }
 
 
 void ReversePolishNotation()
 {
-    int *stack = new int[100];	// stack declaration (length fixed)
-    int *top = stack; 		// pointer to the top of the stack
+    float *stack = new float[100];	// stack declaration (length fixed)
+    float *top = stack; 		// pointer to the top of the stack
     std::string temp = " ";
     std::string operations = "+-*/";
     std::cout << "Enter a valid reverse polish notation expression. To get the result, enter '='" << "\n";
 
-    std::cin >> temp;		// I save the first number manually, the rest are processed inside the loop
-    *top = stoi(temp);		// changing the value by working with the pointer
+    std::cin >> temp;			// I save the first number manually, the rest are processed inside the loop
+    *top = stoi(temp);			// changing the value by working with the pointer
 
     while (true)
     {
@@ -55,8 +56,8 @@ void ReversePolishNotation()
         }
         else
         {
-            int operand2 = *top;	//  otherwise we read the top two values ​​from the stack
-            int operand1 = *(top - 1);
+            float operand2 = *top;	//  otherwise we read the top two values ​​from the stack
+            float operand1 = *(top - 1);
             *(top-1) = MathematicalOperation(operand1, operand2, temp);	// and apply the resulting operation to them. now the received value is the top of the stack
             top--;
         }
