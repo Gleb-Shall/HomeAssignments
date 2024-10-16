@@ -9,7 +9,7 @@
 
 int main(int arg, char *argv[])
 {
-    std::cout << "Чтобы закончить выполнение программы, введите 'q' / 'quit' / 'stop' + Enter" << "\n";
+    std::cout << "To end the program, enter 'q' / 'quit' / 'stop' + 'Enter'" << "\n";
     std::string WordToSay = "world";
     while ((WordToSay != "q") && (WordToSay != "quit") && (WordToSay != "stop"))
     {
