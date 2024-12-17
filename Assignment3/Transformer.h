@@ -17,7 +17,6 @@ public:
     Transformer(std::string GunName, std::string TypeAmmo, uint Ammo, uint CountAmmoPerShoot, uint Damage,
     std::string Name, uint Level, uint MaxHealth, uint TempHealth);
 
-    class Gun;
     bool fire();
     bool move();
     bool IsAlife();
