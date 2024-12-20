@@ -54,6 +54,22 @@ void Minicon::call_Master()
 }
 
 
+bool Minicon::operator<(const Minicon& minicon)
+{
+    return get_TempHealth() < minicon.get_TempHealth();
+}
+
+bool Minicon::operator>(const Minicon& minicon)
+{
+    return  get_TempHealth() > minicon.get_TempHealth();
+}
+
+bool Minicon::operator==(const Minicon& minicon)
+{
+    return get_TempHealth() == minicon.get_TempHealth();
+}
+
+
 std::ostream& operator<<(std::ostream& os, const Minicon& minicon)
 {
     os << "Minicon Master: " << minicon.get_Master() << ",\n";

@@ -55,6 +55,22 @@ void Decepticon::call_Comander()
 }
 
 
+bool Decepticon::operator<(const Decepticon& decepticon)
+{
+    return get_TempHealth() < decepticon.get_TempHealth();
+}
+
+bool Decepticon::operator>(const Decepticon& decepticon)
+{
+    return  get_TempHealth() > decepticon.get_TempHealth();
+}
+
+bool Decepticon::operator==(const Decepticon& decepticon)
+{
+    return get_TempHealth() == decepticon.get_TempHealth();
+}
+
+
 std::ostream& operator<<(std::ostream& os, const Decepticon& decepticon)
 {
     os << "Decepticon Commander: " << decepticon.get_Commander() << ",\n";

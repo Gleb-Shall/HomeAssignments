@@ -55,6 +55,22 @@ void Autobot::call_Comander()
 }
 
 
+bool Autobot::operator<(const Autobot& autobot)
+{
+    return get_TempHealth() < autobot.get_TempHealth();
+}
+
+bool Autobot::operator>(const Autobot& autobot)
+{
+    return  get_TempHealth() > autobot.get_TempHealth();
+}
+
+bool Autobot::operator==(const Autobot& autobot)
+{
+    return get_TempHealth() == autobot.get_TempHealth();
+}
+
+
 std::ostream& operator<<(std::ostream& os, const Autobot& autobot)
 {
     os << "Autobot Commander: " << autobot.get_Commander() << ",\n";

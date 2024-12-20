@@ -36,6 +36,10 @@ public:
     void set_number_of_important_things_to_do(const int &number_of_important_things_to_do);
     
     void call_Master();
+    
+    bool operator<(const Minicon& minicon);
+    bool operator>(const Minicon& minicon);
+    bool operator==(const Minicon& minicon);
 };
 
 std::ostream& operator<<(std::ostream& os, const Minicon& minicon);

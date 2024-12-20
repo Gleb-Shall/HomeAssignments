@@ -36,6 +36,10 @@ public:
     void set_amount_of_kindness(const int &amount_of_kindness);
         
     void call_Comander();
+    
+    bool operator<(const Autobot& autobot);
+    bool operator>(const Autobot& autobot);
+    bool operator==(const Autobot& autobot);
 };
 
 std::ostream& operator<<(std::ostream& os, const Autobot& autobot);

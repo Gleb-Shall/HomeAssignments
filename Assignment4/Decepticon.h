@@ -36,6 +36,10 @@ public:
     void set_amount_of_evil(const int &amount_of_evil);
         
     void call_Comander();
+    
+    bool operator<(const Decepticon& decepticon);
+    bool operator>(const Decepticon& decepticon);
+    bool operator==(const Decepticon& decepticon);
 };
 
 std::ostream& operator<<(std::ostream& os, const Decepticon& decepticon);

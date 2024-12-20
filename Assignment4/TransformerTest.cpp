@@ -35,7 +35,9 @@ TEST(TransformTest, TransformerCompare)
 {
     Transformer transformer1 (new Gun("Rebecca", 250), 10000, "Optimus Gang", 135, 56540, 5555);
     Transformer transformer2;
+    EXPECT_EQ(transformer1 < transformer2, false);
     EXPECT_EQ(transformer1 > transformer2, true);
+    EXPECT_EQ(transformer1 == transformer2, false);
 }
 
 // Test for the Autobot output and constructor overloading
@@ -48,6 +50,9 @@ TEST(AutobotTest, AutobotOutput)
     ss << autobot1;
     std::string expected_output = "Autobot Commander: Kung Fu Panda,\nAutobot amount_of_kindness: 3621,\nAutobot Name: Monkey,\nAutobot Level: 135,\nAutobot MaxHealth: 56540,\nAutobot TempHealth: 5555,\nAutobot Gun: Gun name: Devid, Gun Damage: 370,\nAutobot Influence: Influence.power: 10000,\n\n";
     EXPECT_EQ(ss.str(), expected_output);
+    EXPECT_EQ(autobot1 < autobot2, false);
+    EXPECT_EQ(autobot1 > autobot2, true);
+    EXPECT_EQ(autobot1 == autobot2, false);
 }
 
 // Test for the Decepticon output and constructor overloading
@@ -60,6 +65,9 @@ TEST(DecepticonTest, DecepticonOutput)
     ss << decepticon1;
     std::string expected_output = "Decepticon Commander: captain Vrungel,\nDecepticon amount_of_evil: 3621,\nDecepticon Name: Opengamer,\nDecepticon Level: 135,\nDecepticon MaxHealth: 56540,\nDecepticon TempHealth: 5555,\nDecepticon Gun: Gun name: Lucy, Gun Damage: 370,\nDecepticon Influence: Influence.power: 10000,\n\n";
     EXPECT_EQ(ss.str(), expected_output);
+    EXPECT_EQ(decepticon1 < decepticon2, false);
+    EXPECT_EQ(decepticon1 > decepticon2, true);
+    EXPECT_EQ(decepticon1 == decepticon2, false);
 }
 
 // Test for the Minicon output and constructor overloading
@@ -72,4 +80,7 @@ TEST(MiniconTest, MiniconOutput)
     ss << minicon1;
     std::string expected_output = "Minicon Master: Hayao Miyazaki,\nMinicon Number_of_important_things_to_do: 3621,\nMinicon Name: Kingstone,\nMinicon Level: 135,\nMinicon MaxHealth: 56540,\nMinicon TempHealth: 5555,\nMinicon Gun: Gun name: Faraday, Gun Damage: 370,\nMinicon Influence: Influence.power: 10000,\n\n";
     EXPECT_EQ(ss.str(), expected_output);
+    EXPECT_EQ(minicon1 < minicon2, false);
+    EXPECT_EQ(minicon1 > minicon2, true);
+    EXPECT_EQ(minicon1 == minicon2, false);
 }
