@@ -16,6 +16,7 @@ private:
     int Amount_of_kindness;
 
 public:
+    Autobot();
     Autobot(
         Gun* gun,
         const int &Influence_on_robots,

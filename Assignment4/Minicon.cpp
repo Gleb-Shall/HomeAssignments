@@ -6,7 +6,11 @@
 
 #include "Minicon.h"
 
-
+Minicon::Minicon():
+    Transformer(),
+    _Master("Default Master"),
+    Number_of_important_things_to_do(0) 
+{};
 Minicon::Minicon(
     Gun* gun,
     const int &Influence_on_robots,
@@ -20,7 +24,7 @@ Minicon::Minicon(
     Transformer(gun, Influence_on_robots, Name, Level, MaxHealth, TempHealth),
     _Master(Master),
     Number_of_important_things_to_do(number_of_important_things_to_do) 
-    {};
+{};
 
 Minicon::~Minicon() = default;
 
@@ -58,7 +62,7 @@ std::ostream& operator<<(std::ostream& os, const Minicon& minicon)
     os << "Minicon Level: " << minicon.get_Level() << ",\n";
     os << "Minicon MaxHealth: " << minicon.get_Maxhealth() << ",\n";
     os << "Minicon TempHealth: " << minicon.get_TempHealth() << ",\n";
-    os << "Minicon Gun: " << minicon.get_Gun() << ".\n";
-    os << "Minicon Influence: " << minicon.get_Influence() << ",\n";
+    os << "Minicon Gun: " << (*minicon.get_Gun());
+    os << "Minicon Influence: " << minicon.get_Influence() << "\n";
     return os;
 }

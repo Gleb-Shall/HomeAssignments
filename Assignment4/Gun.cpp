@@ -40,6 +40,6 @@ uint Gun::get_Damage() const
 
 std::ostream& operator<<(std::ostream& os, const Gun& gun)
 {
-    os << "Gun name: " << gun.get_Name() << ",\n Gun Damage: " << gun.get_Damage() << ",\n";
+    os << "Gun name: " << gun.get_Name() << ", Gun Damage: " << gun.get_Damage() << ",\n";
     return os;
 }

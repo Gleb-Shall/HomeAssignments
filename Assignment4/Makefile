@@ -25,7 +25,7 @@ TEST-OBJ = TransformerTest.o
 
 .PHONY: default
 
-default: all
+default: all cleanall
 
 # Rule to compile .cpp files to .o files
 %.o: %.cpp $(DEPS)

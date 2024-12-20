@@ -16,6 +16,7 @@ private:
     int Number_of_important_things_to_do;
 
 public:
+    Minicon();
     Minicon(
         Gun* gun,
         const int &Influence_on_robots,

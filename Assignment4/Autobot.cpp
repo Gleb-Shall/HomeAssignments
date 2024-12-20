@@ -6,6 +6,12 @@
 
 #include "Autobot.h"
 
+Autobot::Autobot():
+    Transformer(),
+    _Commander("Default Commander"),
+    Amount_of_kindness(0) 
+{};
+
 Autobot::Autobot(
     Gun* gun,
     const int &Influence_on_robots,
@@ -19,7 +25,7 @@ Autobot::Autobot(
     Transformer(gun, Influence_on_robots, Name, Level, MaxHealth, TempHealth),
     _Commander(Commander),
     Amount_of_kindness(amount_of_kindness) 
-    {};
+{};
 
 Autobot::~Autobot() = default;
 
@@ -57,7 +63,7 @@ std::ostream& operator<<(std::ostream& os, const Autobot& autobot)
     os << "Autobot Level: " << autobot.get_Level() << ",\n";
     os << "Autobot MaxHealth: " << autobot.get_Maxhealth() << ",\n";
     os << "Autobot TempHealth: " << autobot.get_TempHealth() << ",\n";
-    os << "Autobot Gun: " << autobot.get_Gun() << ".\n";
-    os << "Autobot Influence: " << autobot.get_Influence() << ",\n";
+    os << "Autobot Gun: " << (*autobot.get_Gun());
+    os << "Autobot Influence: " << autobot.get_Influence() << "\n";
     return os;
 }

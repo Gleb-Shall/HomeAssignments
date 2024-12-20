@@ -21,6 +21,7 @@ private:
     uint _MaxHealth;
     uint _TempHealth;
 public:
+    Transformer();
     Transformer(
         Gun* gun,
         const int &Influence_on_robots,

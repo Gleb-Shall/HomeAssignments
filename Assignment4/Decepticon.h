@@ -16,6 +16,7 @@ private:
     int Amount_of_evil;
 
 public:
+    Decepticon();
     Decepticon(
         Gun* gun,
         const int &Influence_on_robots,

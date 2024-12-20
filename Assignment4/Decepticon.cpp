@@ -6,6 +6,12 @@
 
 #include "Decepticon.h"
 
+Decepticon::Decepticon():
+    Transformer(),
+    _Commander("Default Commander"),
+    Amount_of_evil(0) 
+{};
+
 Decepticon::Decepticon(
     Gun* gun,
     const int &Influence_on_robots,
@@ -15,11 +21,11 @@ Decepticon::Decepticon(
     const uint &TempHealth,
     const std::string &Commander,
     const int &amount_of_evil
-):
+    ):
     Transformer(gun, Influence_on_robots, Name, Level, MaxHealth, TempHealth),
     _Commander(Commander),
     Amount_of_evil(amount_of_evil) 
-    {};
+{};
 
 Decepticon::~Decepticon() = default;
 
@@ -48,15 +54,16 @@ void Decepticon::call_Comander()
     std::cout << _Commander << ", I need help !!!\n";
 }
 
-std::ostream& Decepticon::operator<<(std::ostream& os, const Decepticon& decepticon)
+
+std::ostream& operator<<(std::ostream& os, const Decepticon& decepticon)
 {
     os << "Decepticon Commander: " << decepticon.get_Commander() << ",\n";
-    os << "Decepticon Commander: " << decepticon.get_amount_of_evil() << ",\n";
+    os << "Decepticon amount_of_evil: " << decepticon.get_amount_of_evil() << ",\n";
     os << "Decepticon Name: " << decepticon.get_Name() << ",\n";
     os << "Decepticon Level: " << decepticon.get_Level() << ",\n";
     os << "Decepticon MaxHealth: " << decepticon.get_Maxhealth() << ",\n";
     os << "Decepticon TempHealth: " << decepticon.get_TempHealth() << ",\n";
-    os << "Decepticon Gun: " << decepticon.get_Gun() << ".\n";
-    os << "Decepticon Influence: " << decepticon.get_Influence() << ",\n";
+    os << "Decepticon Gun: " << (*decepticon.get_Gun());
+    os << "Decepticon Influence: " << decepticon.get_Influence() << "\n";
     return os;
 }

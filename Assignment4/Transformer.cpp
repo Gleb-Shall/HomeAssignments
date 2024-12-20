@@ -7,6 +7,14 @@
 
 #include "Transformer.h"
 
+Transformer::Transformer():
+    _Gun(new Gun("Defaut name", 0)),
+    _Influence(0),
+    _Name("Default name"),
+    _Level(0),
+    _MaxHealth(0),
+    _TempHealth(0)
+{};
 
 Transformer::Transformer(
     Gun* gun,
@@ -142,7 +150,7 @@ std::ostream& operator<<(std::ostream& os, const Transformer& transformer)
     os << "Transformer Level: " << transformer.get_Level() << ",\n";
     os << "Transformer MaxHealth: " << transformer.get_Maxhealth() << ",\n";
     os << "Transformer TempHealth: " << transformer.get_TempHealth() << ",\n";
-    os << "Transformer Gun: " << transformer.get_Gun() << ".\n";
-    os << "transformer Influence: " << transformer.get_Influence() << ",\n";
+    os << "Transformer Gun: " << (*transformer.get_Gun());
+    os << "transformer Influence: " << transformer.get_Influence() << "\n";
     return os;
 }

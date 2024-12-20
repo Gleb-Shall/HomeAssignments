@@ -12,100 +12,64 @@
 #include "Minicon.h"
 #include "Decepticon.h"
 
-// Test for the Influence class
-TEST(InfluenceTest, PowerTest)
+// Test for the Transformers output and constructor overloading
+TEST(TransformerTest, TransformerOutput)
 {
-    Influence influence(-150);
-    EXPECT_EQ(influence.get_Power(), -150);
+    Transformer transformer1(new Gun("Rebecca", 250), 10000, "Optimus Gang", 135, 56540, 5555);
+    Transformer transformer2;
+    std::cout << transformer1 << transformer2;
+    
+    std::stringstream ss1;
+    ss1 << transformer1;
+    std::stringstream ss2;
+    ss2 << transformer2;
 
-    influence.set_Power(50);
-    EXPECT_EQ(influence.get_Power(), 50);
+    std::string expected_output1 = "Transformer Name: Optimus Gang,\nTransformer Level: 135,\nTransformer MaxHealth: 56540,\nTransformer TempHealth: 5555,\nTransformer Gun: Gun name: Rebecca, Gun Damage: 250,\ntransformer Influence: Influence.power: 10000,\n\n";
+    EXPECT_EQ(ss1.str(), expected_output1);
+    std::string expected_output2 = "Transformer Name: Default name,\nTransformer Level: 0,\nTransformer MaxHealth: 0,\nTransformer TempHealth: 0,\nTransformer Gun: Gun name: Defaut name, Gun Damage: 0,\ntransformer Influence: Influence.power: 0,\n\n";
+    EXPECT_EQ(ss2.str(), expected_output2);
 }
 
-// Test for the Gun class
-TEST(GunTest, NameAndDamageTest)
+// Test for the Transformer compare
+TEST(TransformTest, TransformerCompare)
 {
-    Gun gun("Rebecca", 223);
-    EXPECT_EQ(gun.get_Name(), "Rebecca");
-    EXPECT_EQ(gun.get_Damage(), 223);
-
-    gun.set_Name("Poopy");
-    gun.set_Damage(49);
-    EXPECT_EQ(gun.get_Name(), "Poopy");
-    EXPECT_EQ(gun.get_Damage(), 49);
+    Transformer transformer1 (new Gun("Rebecca", 250), 10000, "Optimus Gang", 135, 56540, 5555);
+    Transformer transformer2;
+    EXPECT_EQ(transformer1 > transformer2, true);
 }
 
-// Test for the Transformers build
-TEST(TransformerTest, TransformerBuild)
+// Test for the Autobot output and constructor overloading
+TEST(AutobotTest, AutobotOutput)
 {
-    Transformer transformer(new Gun("Rebecca", 250), 10000, "Optimus Gang", 135, 56540, 5555);
-
-    EXPECT_EQ(transformer.get_Name(), "Optimus Gang");
-    EXPECT_EQ(transformer.get_Level(), 135);
-    EXPECT_EQ(transformer.get_Maxhealth(), 56540);
-    EXPECT_EQ(transformer.get_TempHealth(), 5555);
-    EXPECT_EQ(transformer.get_Gun()->get_Name(), "Rebecca");
-    EXPECT_EQ(transformer.get_Gun()->get_Damage(), 250);
-    EXPECT_EQ(transformer.get_Influence().get_Power(), 10000);
-    
-    transformer.set_Gun(new Gun("filter for water", 1));
-    EXPECT_EQ(transformer.get_Gun()->get_Name(), "filter for water");
-    EXPECT_EQ(transformer.get_Gun()->get_Damage(), 1);
-    
-    transformer.set_Name("MMMMonster");
-    EXPECT_EQ(transformer.get_Name(), "MMMMonster");
-}
-// Test for the Transformers methods
-TEST(TransformerTest, TransformerMethods)
-{
-    Transformer transformer(new Gun("Rebecca", 250), 10000, "Optimus Gang", 135, 56540, 5555);
-    
-    EXPECT_EQ(transformer.IsAlife(), true);
-    EXPECT_EQ(transformer.fire(), true);
-    EXPECT_EQ(transformer.move(), true);
+    Autobot autobot1(new Gun("Devid", 370), 10000, "Monkey", 135, 56540, 5555, "Kung Fu Panda", 3621);
+    Autobot autobot2;
+    std::cout << autobot1 << autobot2;
+    std::stringstream ss;
+    ss << autobot1;
+    std::string expected_output = "Autobot Commander: Kung Fu Panda,\nAutobot amount_of_kindness: 3621,\nAutobot Name: Monkey,\nAutobot Level: 135,\nAutobot MaxHealth: 56540,\nAutobot TempHealth: 5555,\nAutobot Gun: Gun name: Devid, Gun Damage: 370,\nAutobot Influence: Influence.power: 10000,\n\n";
+    EXPECT_EQ(ss.str(), expected_output);
 }
 
-// Test for the Autobot build and methods
-TEST(AutobotTest, AutobotBuildAndMethods)
+// Test for the Decepticon output and constructor overloading
+TEST(DecepticonTest, DecepticonOutput)
 {
-    Autobot autobot(new Gun("Devid", 370), 10000, "Monkey", 135, 56540, 5555, "Kung Fu Panda", 3621);
-    
-    EXPECT_EQ(autobot.get_Commander(), "Kung Fu Panda");
-    EXPECT_EQ(autobot.get_amount_of_kindness(), 3621);
-    autobot.call_Comander();
-    autobot.set_Commander("zuravl");
-    autobot.set_amount_of_kindness(456);
-    EXPECT_EQ(autobot.get_Commander(), "zuravl");
-    EXPECT_EQ(autobot.get_amount_of_kindness(), 456);
-    autobot.call_Comander();
+    Decepticon decepticon1(new Gun("Lucy", 370), 10000, "Opengamer", 135, 56540, 5555, "captain Vrungel", 3621);
+    Decepticon decepticon2;
+    std::cout << decepticon1 << decepticon2;
+    std::stringstream ss;
+    ss << decepticon1;
+    std::string expected_output = "Decepticon Commander: captain Vrungel,\nDecepticon amount_of_evil: 3621,\nDecepticon Name: Opengamer,\nDecepticon Level: 135,\nDecepticon MaxHealth: 56540,\nDecepticon TempHealth: 5555,\nDecepticon Gun: Gun name: Lucy, Gun Damage: 370,\nDecepticon Influence: Influence.power: 10000,\n\n";
+    EXPECT_EQ(ss.str(), expected_output);
 }
 
-// Test for the Decepticon build and methods
-TEST(DecepticonTest, DecepticonBuildAndMethods)
+// Test for the Minicon output and constructor overloading
+TEST(MiniconTest, MiniconOutput)
 {
-    Decepticon decepticon(new Gun("Lucy", 370), 10000, "Opengamer", 135, 56540, 5555, "captain Vrungel", 3621);
-    
-    EXPECT_EQ(decepticon.get_Commander(), "captain Vrungel");
-    EXPECT_EQ(decepticon.get_amount_of_evil(), 3621);
-    decepticon.call_Comander();
-    decepticon.set_Commander("Helltaker");
-    decepticon.set_amount_of_evil(456);
-    EXPECT_EQ(decepticon.get_Commander(), "Helltaker");
-    EXPECT_EQ(decepticon.get_amount_of_evil(), 456);
-    decepticon.call_Comander();
-}
-
-// Test for the Minicon build and methods
-TEST(MiniconTest, MiniconBuildAndMethods)
-{
-    Minicon minicon(new Gun("Faraday", 370), 10000, "Kingstone", 135, 56540, 5555, "Hayao Miyazaki", 3621);
-    
-    EXPECT_EQ(minicon.get_Master(), "Hayao Miyazaki");
-    EXPECT_EQ(minicon.get_number_of_important_things_to_do(), 3621);
-    minicon.call_Master();
-    minicon.set_Master("Seva, moi drug");
-    minicon.set_number_of_important_things_to_do(456);
-    EXPECT_EQ(minicon.get_Master(), "Seva, moi drug");
-    EXPECT_EQ(minicon.get_number_of_important_things_to_do(), 456);
-    minicon.call_Master();
+    Minicon minicon1(new Gun("Faraday", 370), 10000, "Kingstone", 135, 56540, 5555, "Hayao Miyazaki", 3621);
+    Minicon minicon2;
+    std::cout << minicon1 << minicon2;
+    std::stringstream ss;
+    ss << minicon1;
+    std::string expected_output = "Minicon Master: Hayao Miyazaki,\nMinicon Number_of_important_things_to_do: 3621,\nMinicon Name: Kingstone,\nMinicon Level: 135,\nMinicon MaxHealth: 56540,\nMinicon TempHealth: 5555,\nMinicon Gun: Gun name: Faraday, Gun Damage: 370,\nMinicon Influence: Influence.power: 10000,\n\n";
+    EXPECT_EQ(ss.str(), expected_output);
 }
