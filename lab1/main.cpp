@@ -4,35 +4,38 @@
    Lab1
 */
 
-
-#include<iostream>
-#include<fstream>
-#include<vector>
-#include<string>
+#include <iostream>
+#include <vector>
+#include <string>
 #include "WorkWithBMP.h"
 
+int main() {
+    try {
+        // Input and output paths
+        std::string inputPath = "Mandrill.bmp";
+        std::string outputPathRotated = "Mandrill_rotated.bmp";
+        std::string outputPathFiltered = "Mandrill_filtered.bmp";
 
-void test()
-{
+        // Initialize image
+        Image image(512, 512, inputPath);
 
-    std::string path = "Mandrill.bmp";
-    Image image = Image(512, 512, path);
-    std::cout<<512*512<<" byte will be ocupied by img";
-    std::vector<unsigned char> vector = image.readToVector(path, 512*512);
-    /*
-    for(int i = 0; i<= 10; i++)
-    {
-        std::cout<<vector[i]<<std::endl;
+        // Read BMP data into vector
+        std::vector<unsigned char> data = image.readToVector(inputPath, 512 * 512);
+
+        // Rotate image by 90 degrees clockwise
+        image.rotate90Clockwise(data);
+        image.writeFromVector(outputPathRotated, data);
+        std::cout << "Image rotated and saved to " << outputPathRotated << "\\n";
+
+        // Apply Gaussian filter
+        image.applyGaussianFilter(data);
+        image.writeFromVector(outputPathFiltered, data);
+        std::cout << "Gaussian filter applied and saved to " << outputPathFiltered << "\\n";
+
+    } catch (const std::exception& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+        return 1;
     }
-    */
-    //image.writeToFile("new.bmp",vector);
-    //image.writeToRaw("new.raw", vector);
-    image.writeToRaw("cwrotated.bmp",image.clockwiseRotate(vector));
-    image.writeToRaw("ccwrotated.bmp", image.counterClockwiseRotate(vector));
-    image.saveAsGaussianImage(image.counterClockwiseRotate(vector),5);
-}
 
-int main()
-{
-    test();
+    return 0;
 }
