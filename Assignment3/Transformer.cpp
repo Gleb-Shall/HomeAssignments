@@ -5,36 +5,37 @@
 */
 
 
-#include "Gun.h"
+#include "Transformer.h"
 
 
-Transformer::Transformer(std::string GunName, std::string TypeAmmo, uint Ammo, uint CountAmmoPerShoot, uint Damage,
-                         std::string Name, uint Level, uint MaxHealth, uint TempHealth)
-{
-    _Gun = new Gun(GunName, TypeAmmo, Ammo, CountAmmoPerShoot, Damage);
-    _Name = Name;
-    _Level = Level;
-    _MaxHealth = MaxHealth;
-    _TempHealt = TempHealth;
-}
+Transformer::Transformer(
+    Gun* gun,
+    const int &Influence_on_robots,
+    const std::string &Name,
+    const uint &Level,
+    const uint &MaxHealth,
+    const uint &TempHealth
+    ):
 
-bool Transformer::fire()
-{
-    if (_Gun -> get_Ammo() >= _Gun -> get_CountAmmoPerShoot() && Transformer::IsAlife())
-    {
-        Gun -> set_Ammo(_Gun -> get_Ammo() - _Gun -> get_CountAmmoPerShoot());
-        return true;
-    }
-    return false;
-}
+    _Gun(gun),
+    _Influence(Influence_on_robots),
+    _Name(Name),
+    _Level(Level),
+    _MaxHealth(MaxHealth),
+    _TempHealth(TempHealth)
+{};
+
+Transformer::~Transformer() = default;
 
 
 bool Transformer::move()
 {
     if (Transformer::IsAlife())
     {
+        std::cout << "That was fast\n";
         return true;
     }
+    std::cout << "On no, he catch hit\n";
     return false;
 }
 
@@ -43,59 +44,77 @@ bool Transformer::IsAlife()
 {
     if (Transformer::get_TempHealth() != 0)
     {
+        std::cout << _Name << " is alive\n";
         return true;
     }
+    std::cout << _Name << " is dead\n";
     return false;
 }
 
 
-Gun* Transformer::get_Gun()
+Gun* Transformer::get_Gun() const
 {
     return _Gun;
 }
-
-
-void Transformer::set_Name(std::string Name)
+void Transformer::set_Gun(Gun* gun)
 {
-    Name = Name;
-    return;
+    _Gun = gun;
 }
-std::string Transformer::get_Name()
+bool Transformer::fire()
+{
+    if (Transformer::IsAlife())
+    {
+        std::cout << _Name << " with " << _Gun->get_Name() << " dealt " << _Gun->get_Damage() << " damage\n";
+        return true;
+    }
+    std::cout << _Name << " can not more fire\n";
+    return false;
+}
+
+Influence Transformer::get_Influence() const
+{
+    return _Influence;
+};
+void Transformer::set_Influence(const Influence &influence)
+{
+    _Influence = influence;
+};
+
+void Transformer::set_Name(const std::string &Name)
+{
+    _Name = Name;
+}
+std::string Transformer::get_Name() const
 {
     return _Name;
 }
 
 
-void Transformer::set_Level(uint Level)
+void Transformer::set_Level(const uint &Level)
 {
     _Level = Level;
-    return;
 }
-uint Transformer::get_Level()
+uint Transformer::get_Level() const
 {
     return _Level;
 }
 
 
-void Transformer::set_MaxHealth(uint MaxHealth)
+void Transformer::set_MaxHealth(const uint &MaxHealth)
 {
     _MaxHealth = MaxHealth;
-    return;
 }
-uint Transformer::get_Maxhealth()
+uint Transformer::get_Maxhealth() const
 {
     return _MaxHealth;
 }
 
 
-void Transformer::set_TempHealth(uint TempHealth);
+void Transformer::set_TempHealth(const uint &TempHealth)
 {
     _TempHealth = TempHealth;
-    return;
 }
-uint Transformer::get_TempHealth()
+uint Transformer::get_TempHealth() const
+{
     return _TempHealth;
 }
-
-
-Transformer::~Transformer() = default{};

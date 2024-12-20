@@ -5,70 +5,35 @@
 */
 
 
-#include "Transformer.h"
+#include "Gun.h"
 
 
-Gun::Gun(std::string Name, std::string TypeAmmo, uint Ammo, uint CountAmmoPerShoot, uint Damage)
-    : _Name(Name),
-    _TypeAmmo(TypeAmmo),
-    _Ammo(Ammo),
-    _CountAmmoPerShoot(CountAmmoPerShoot),
-    _Damage(Damage) {}
+Gun::Gun(
+    const std::string &Name,
+    const uint &Damage):
+    _Name(Name),
+    _Damage(Damage) 
+{}
+Gun::~Gun() = default;
 
 
-void Gun::set_Name(std::string Name)
+void Gun::set_Name(const std::string &Name)
 {
     _Name = Name;
     return;
 }
-std::string Gun::get_Name()
+std::string Gun::get_Name() const
 {
     return _Name;
 }
 
 
-void Gun::set_TypeAmmo(std::string TypeAmmo)
-{
-    _TypeAmmo = TypeAmmo;
-    return;
-}
-std::string Gun::get_TypeAmmo()
-{
-    return _TypeAmmo;
-}
-
-
-void Gun::set_Ammo(uint Ammo)
-{
-    _Ammo = Ammo;
-    return;
-}
-uint Gun::get_Ammo()
-{
-    return _Ammo;
-}
-
-
-void Gun::set_CountAmmoPerShoot(uint CountAmmoPerShoot)
-{
-    _CountAmmoPerShoot = CountAmmoPerShoot;
-    return;
-}
-uint Gun::get_CountAmmoPerShoot()
-{
-    return _CountAmmoPerShoot;
-}
-
-
-void Gun::set_Damage(uint Damage)
+void Gun::set_Damage(const uint &Damage)
 {
     _Damage = Damage;
     return;
 }
-uint Gun::get_Damage()
+uint Gun::get_Damage() const
 {
     return _Damage;
 }
-
-
-Gun::~Gun() = default;

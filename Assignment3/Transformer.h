@@ -6,42 +6,54 @@
 
 
 #ifndef TRANSFORMER_H
-#define TRANSORMER_H
+#define TRANSFORMER_H
 
 #include "Gun.h"
-
+#include "Influence.h"
 
 class Transformer
 {
-public:
-    Transformer(std::string GunName, std::string TypeAmmo, uint Ammo, uint CountAmmoPerShoot, uint Damage,
-    std::string Name, uint Level, uint MaxHealth, uint TempHealth);
-
-    bool fire();
-    bool move();
-    bool IsAlife();
-
-    Gun* get_Gun();
-
-    void set_Name(std::string Name);
-    std::string get_Name();
-
-    void set_Level(uint Level);
-    uint get_Level();
-
-    void set_MaxHealth(uint MaxHealth);
-    uint get_Maxhealth();
-
-    void set_TempHealth(uint TempHealth);
-    uint get_TempHealth();
-
-    ~Transformer();
 private:
     Gun* _Gun;
+    Influence _Influence;
     std::string _Name;
     uint _Level;
     uint _MaxHealth;
     uint _TempHealth;
+public:
+    Transformer(
+        Gun* gun,
+        const int &Influence_on_robots,
+        const std::string &Name,
+        const uint &Level,
+        const uint &MaxHealth,
+        const uint &TempHealth
+        );
+
+    ~Transformer();
+
+    bool move();
+    bool IsAlife();
+
+    Gun* get_Gun() const;
+    void set_Gun(Gun* gun);
+    bool fire();
+
+    Influence get_Influence() const;
+    void set_Influence(const Influence &influence);
+
+    void set_Name(const std::string &Name);
+    std::string get_Name() const;
+
+    void set_Level(const uint &Level);
+    uint get_Level() const;
+
+    void set_MaxHealth(const uint &MaxHealth);
+    uint get_Maxhealth() const;
+
+    void set_TempHealth(const uint &TempHealth);
+    uint get_TempHealth() const;
+
 };
 
 #endif

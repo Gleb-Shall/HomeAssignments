@@ -9,35 +9,26 @@
 #define GUN_H
 
 #include <string>
+#include <iostream>
 
 
 class Gun
 {
-public:
-    Gun(std::string Name, std::string TypeAmmo, uint Ammo, uint CountAmmoPerShoot, uint Damage);
-
-    void set_Name(std::string Name);
-    std::string get_Name();
-
-    void set_TypeAmmo(std::string TypeAmmo);
-    std::string get_TypeAmmo();
-
-    void set_Ammo(uint Ammo);
-    uint get_Ammo();
-
-    void set_CountAmmoPerShoot(uint CountAmmoPerShoot);
-    uint get_CountAmmoPerShoot();
-
-    void set_Damage(uint Damage);
-    uint get_Damage();
-
-    ~Gun();
 private:
     std::string _Name;
-    std::string _TypeAmmo;
-    uint _Ammo;
-    uint _CountAmmoPerShoot;
     uint _Damage;
+public:
+    Gun(
+        const std::string &Name,
+        const uint &Damage);
+    
+    ~Gun();
+    
+    void set_Name(const std::string &Name);
+    std::string get_Name() const;
+
+    void set_Damage(const uint &Damage);
+    uint get_Damage() const;
 };
 
 #endif
