@@ -1,56 +1,23 @@
-PROJECT = transformers
+# Project name
+PROJECT = start
 
-LIBPROJECT = $(PROJECT).a
-
-TESTPROJECT = test
-
+# Compiler
 CXX = g++
 
-A = ar
+# Source files
+SRC = main.cpp
 
-AFLAGS = rsv
+# Object files
+OBJ = $(SRC:.cpp=.o)
 
-CCXFLAGS = -I. -std=c++11 -Wall -Wextra -g -pthread
+# Executable target
+$(PROJECT): $(OBJ)
+	$(CXX) -o $(PROJECT) $(OBJ) $(GTEST_LIBS)
 
-LDXXFLAGS = $(CCXFLAGS) -L. -l:$(LIBPROJECT)
+# Compile object files
+%.o: %.cpp
+	$(CXX) -c $< -o $@
 
-LDGTESTFLAGS = $(LDXXFLAGS) -lgtest -lgtest_main -lpthread
-
-DEPS = $(wildcard *.h)
-
-OBJ = main.o TransformerTest.o
-
-# Test object files (just the test file for now)
-TEST-OBJ = TransformerTest.o
-
-.PHONY: default
-
-default: all cleanall
-
-# Rule to compile .cpp files to .o files
-%.o: %.cpp $(DEPS)
-	$(CXX) -c -o $@ $< $(CCXFLAGS)
-
-# Create static library
-$(LIBPROJECT): $(OBJ)
-	$(A) $(AFLAGS) $@ $^
-
-# Build the test executable
-$(TESTPROJECT): $(LIBPROJECT) $(TEST-OBJ)
-	$(CXX) -o $@ $(TEST-OBJ) $(LDGTESTFLAGS)
-
-# Run the tests
-tests: $(TESTPROJECT)
-	./$(TESTPROJECT)
-
-# Build all targets
-all: tests
-
-# Clean up object files
+# Clean target
 clean:
-	rm -f *.o
-
-# Clean up all build artifacts
-cleanall: clean
-	rm -f $(LIBPROJECT)
-	rm -f $(TESTPROJECT)
+	rm -f $(OBJ) $(PROJECT)
