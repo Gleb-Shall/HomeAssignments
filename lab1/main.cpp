@@ -15,20 +15,20 @@
 void test()
 {
 
-    std::string path = "river_and_sky.bmp";
-    Image image = Image(3440, 5215, path);
-    std::cout << 3440*5215 << " byte will be ocupied by img";
-    std::vector<unsigned char> vector = image.readToVector(path, 3440*5215);
-    
-   //  for(int i = 0; i<= 10; i++)
-   //  {
-   //      std::cout<<vector[i]<<std::endl;
-   //  }
-    
-   //  image.writeToFile("new.bmp",vector);
-   //  image.writeToRaw("new.raw", vector);
-    image.writeToRaw("cwrotated.raw",image.clockwiseRotate(vector));
-    image.writeToRaw("ccwrotated.raw", image.counterClockwiseRotate(vector));
+    std::string path = "Mandrill.bmp";
+    Image image = Image(512, 512, path);
+    std::cout<<512*512<<" byte will be ocupied by img";
+    std::vector<unsigned char> vector = image.readToVector(path, 512*512);
+    /*
+    for(int i = 0; i<= 10; i++)
+    {
+        std::cout<<vector[i]<<std::endl;
+    }
+    */
+    //image.writeToFile("new.bmp",vector);
+    //image.writeToRaw("new.raw", vector);
+    image.writeToRaw("cwrotated.bmp",image.clockwiseRotate(vector));
+    image.writeToRaw("ccwrotated.bmp", image.counterClockwiseRotate(vector));
     image.saveAsGaussianImage(image.counterClockwiseRotate(vector),5);
 }
 
