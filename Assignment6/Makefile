@@ -1,4 +1,4 @@
-PROJECT = transformers
+PROJECT = classes
 
 LIBPROJECT = $(PROJECT).a
 
@@ -10,15 +10,15 @@ A = ar
 
 AFLAGS = rsv
 
-CCXFLAGS = -I. -std=c++11 -Wall -Wextra -g -pthread
+CXXFLAGS = -I. -std=c++11 -Wall -Wextra -g -pthread
 
-LDXXFLAGS = $(CCXFLAGS) -L. -l:$(LIBPROJECT)
+LDXXFLAGS = $(CXXFLAGS) -L. -l:$(LIBPROJECT)
 
 LDGTESTFLAGS = $(LDXXFLAGS) -lgtest -lgtest_main -lpthread
 
 DEPS = $(wildcard *.h)
 
-OBJ = main.o TransformerTest.o
+OBJ = Class1.o Class2.o Class3.o Transformer.o TransformerTest.o
 
 # Test object files (just the test file for now)
 TEST-OBJ = TransformerTest.o
@@ -29,7 +29,7 @@ default: all cleanall
 
 # Rule to compile .cpp files to .o files
 %.o: %.cpp $(DEPS)
-	$(CXX) -c -o $@ $< $(CCXFLAGS)
+	$(CXX) -c -o $@ $< $(CXXFLAGS)
 
 # Create static library
 $(LIBPROJECT): $(OBJ)

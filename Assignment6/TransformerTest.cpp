@@ -4,7 +4,10 @@
    Assignment 6
 */
 
-#include "main.cpp"
+
+#include <gtest/gtest.h>
+#include <vector>
+#include <iostream>
 
 
 // Tests for Class1
