@@ -5,32 +5,28 @@
 */
 
 #include <iostream>
-#include <vector>
-#include <string>
 #include "WorkWithBMP.h"
 
 int main() {
     try {
-        // Input and output paths
         std::string inputPath = "Mandrill.bmp";
         std::string outputPathRotated = "Mandrill_rotated.bmp";
         std::string outputPathFiltered = "Mandrill_filtered.bmp";
 
-        // Initialize image
-        Image image(512, 512, inputPath);
+        Image image(inputPath);
 
-        // Read BMP data into vector
-        std::vector<unsigned char> data = image.readToVector(inputPath, 512 * 512);
+        // Read BMP data
+        auto data = image.readToVector(inputPath);
 
-        // Rotate image by 90 degrees clockwise
+        // Rotate and save
         image.rotate90Clockwise(data);
         image.writeFromVector(outputPathRotated, data);
-        std::cout << "Image rotated and saved to " << outputPathRotated << "\\n";
+        std::cout << "Rotated image saved to " << outputPathRotated << std::endl;
 
-        // Apply Gaussian filter
+        // Apply Gaussian filter and save
         image.applyGaussianFilter(data);
         image.writeFromVector(outputPathFiltered, data);
-        std::cout << "Gaussian filter applied and saved to " << outputPathFiltered << "\\n";
+        std::cout << "Filtered image saved to " << outputPathFiltered << std::endl;
 
     } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;
