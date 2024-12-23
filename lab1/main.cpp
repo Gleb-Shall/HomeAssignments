@@ -10,23 +10,39 @@
 int main() {
     try {
         std::string inputPath = "Mandrill.bmp";
-        std::string outputPathRotated = "Mandrill_rotated.bmp";
-        std::string outputPathFiltered = "Mandrill_filtered.bmp";
+
+        std::string outputPathRotatedClockwise = "Mandrill_rotated_clockwise.bmp";
+        std::string outputPathFilteredClockwise = "Mandrill_filtered_clockwise.bmp";
+
+        std::string outputPathRotatedCounterClockwise = "Mandrill_rotated_counter_clockwise.bmp";
+        std::string outputPathFilteredCounterClockwise = "Mandrill_filtered_counter_clockwise.bmp";
+
 
         Image image(inputPath);
 
         // Read BMP data
-        auto data = image.readToVector(inputPath);
+        auto dataClockwise = image.readToVector(inputPath);
+        auto dataCounterClockwise = image.readToVector(inputPath);
 
-        // Rotate and save
-        image.rotate90Clockwise(data);
-        image.writeFromVector(outputPathRotated, data);
-        std::cout << "Rotated image saved to " << outputPathRotated << std::endl;
+        // Rotate 90 Clockwise and save
+        image.rotate90Clockwise(dataClockwise);
+        image.writeFromVector(outputPathRotatedClockwise, dataClockwise);
+        std::cout << "Rotated image saved to " << outputPathRotatedClockwise << std::endl;
 
         // Apply Gaussian filter and save
-        image.applyGaussianFilter(data);
-        image.writeFromVector(outputPathFiltered, data);
-        std::cout << "Filtered image saved to " << outputPathFiltered << std::endl;
+        image.applyGaussianFilter(dataClockwise);
+        image.writeFromVector(outputPathFilteredClockwise, dataClockwise);
+        std::cout << "Filtered image saved to " << outputPathFilteredClockwise << std::endl;
+
+        // Rotate 90 Counter Clockwise and save
+        image.rotate90CounterClockwise(dataCounterClockwise);
+        image.writeFromVector(outputPathRotatedCounterClockwise, dataCounterClockwise);
+        std::cout << "Rotated image saved to " << outputPathRotatedCounterClockwise << std::endl;
+
+        // Apply Gaussian filter and save
+        image.applyGaussianFilter(dataCounterClockwise);
+        image.writeFromVector(outputPathFilteredCounterClockwise, dataCounterClockwise);
+        std::cout << "Filtered image saved to " << outputPathFilteredCounterClockwise << std::endl;
 
     } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;

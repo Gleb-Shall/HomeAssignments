@@ -112,7 +112,24 @@ struct Image {
         for (int y = 0; y < height; ++y) {
             for (int x = 0; x < width; ++x) {
                 for (int c = 0; c < 3; ++c) {
-                    rotated[(x * height + (height - y - 1)) * 3 + c] =
+                    rotated[((width - x - 1) * height +  y) * 3 + c] =
+                        data[y * rowSize + x * 3 + c];
+                }
+            }
+        }
+
+        std::swap(width, height);
+        rowSize = (width * 3 + 3) & ~3;
+        data = std::move(rotated);
+    }
+
+    void rotate90CounterClockwise(std::vector<unsigned char>& data) {
+        std::vector<unsigned char> rotated(width * height * 3);
+
+        for (int y = 0; y < height; ++y) {
+            for (int x = 0; x < width; ++x) {
+                for (int c = 0; c < 3; ++c) {
+                    rotated[(x * height +  (height - y - 1)) * 3 + c] =
                         data[y * rowSize + x * 3 + c];
                 }
             }
