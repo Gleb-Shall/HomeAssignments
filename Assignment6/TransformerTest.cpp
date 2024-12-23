@@ -8,7 +8,10 @@
 #include <gtest/gtest.h>
 #include <vector>
 #include <iostream>
-
+#include "Class1.h"
+#include "Class2.h"
+#include "Class3.h"
+#include "Transformer.h"
 
 // Tests for Class1
 TEST(TransformerTest, Class1FooTrue) 

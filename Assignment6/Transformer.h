@@ -10,9 +10,9 @@
 
 
 #include <vector>
+#include <iostream>
 
 
-// General template
 template <typename T1, typename T2>
 class Transformer {
 private:
@@ -21,11 +21,15 @@ private:
     T1 instance;
 
 public:
-    Transformer(int numberp, const std::vector<float>& vec, const T1& obj);
-    bool foo();
+    Transformer(int numberp, const std::vector<float>& vec, const T1& obj)
+        : number(numberp), vec(vec), instance(obj) {}
+
+    bool foo() {
+        return instance.bar(number, vec);
+    }
 };
 
-// Partial specialization for <int, T>
+// Partial specialization
 template <typename T>
 class Transformer<int, T> {
 private:
@@ -33,11 +37,15 @@ private:
     std::vector<float> vec;
 
 public:
-    Transformer(int numberp, const std::vector<float>& vecp, const T& obj);
-    bool foo();
+    Transformer(int numberp, const std::vector<float>& vecp, const T& obj)
+        : number(numberp), vec(vecp) {}
+
+    bool foo() {
+        return true;
+    }
 };
 
-// Partial specialization for <double, T>
+// Partial specialization
 template <typename T>
 class Transformer<double, T> {
 private:
@@ -45,8 +53,12 @@ private:
     std::vector<float> vec;
 
 public:
-    Transformer(int numberp, const std::vector<float>& vecp, const T& obj);
-    bool foo();
+    Transformer(int numberp, const std::vector<float>& vecp, const T& obj)
+        : number(numberp), vec(vecp) {}
+
+    bool foo() {
+        return false;
+    }
 };
 
 #endif
