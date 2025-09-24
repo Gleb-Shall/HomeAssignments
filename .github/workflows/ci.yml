@@ -30,11 +30,18 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y build-essential libgtest-dev
+        echo "GTEST_INCLUDE_PATH=/usr/include/gtest" >> $GITHUB_ENV
+        echo "GTEST_LIB_PATH=/usr/lib/x86_64-linux-gnu" >> $GITHUB_ENV
+        echo "Verifying Google Test installation:"
+        ls -la /usr/include/gtest/
+        ls -la /usr/lib/x86_64-linux-gnu/libgtest*
     
     - name: Install dependencies (macOS)
       if: runner.os == 'macOS'
       run: |
         brew install googletest
+        echo "GTEST_INCLUDE_PATH=/opt/homebrew/include" >> $GITHUB_ENV
+        echo "GTEST_LIB_PATH=/opt/homebrew/lib" >> $GITHUB_ENV
     
     - name: Install dependencies (Windows)
       if: runner.os == 'Windows'
@@ -43,6 +50,8 @@ jobs:
         git clone https://github.com/Microsoft/vcpkg.git C:\vcpkg
         C:\vcpkg\bootstrap-vcpkg.bat
         C:\vcpkg\vcpkg install gtest
+        echo "GTEST_INCLUDE_PATH=C:\vcpkg\installed\x64-windows\include" >> $GITHUB_ENV
+        echo "GTEST_LIB_PATH=C:\vcpkg\installed\x64-windows\lib" >> $GITHUB_ENV
     
     - name: Set up compiler (GCC)
       if: matrix.compiler == 'gcc'
@@ -75,6 +84,10 @@ jobs:
     - name: Build and run tests
       run: |
         cd lab2/game/tests
+        echo "Environment variables:"
+        echo "GTEST_INCLUDE_PATH=$GTEST_INCLUDE_PATH"
+        echo "GTEST_LIB_PATH=$GTEST_LIB_PATH"
+        echo "CXX=$CXX"
         make clean
         make CXX=$CXX
         ./all_tests
