@@ -3,9 +3,9 @@ CXX := g++
 CXXFLAGS := -std=c++17 -O1 -g -Wall -Wextra
 INCLUDES := -I../include
 
-# Google Test flags (Homebrew installation)
-GTEST_INCLUDE := -I/opt/homebrew/include
-GTEST_LIBS := -L/opt/homebrew/lib -lgtest -lgtest_main -pthread
+# Google Test flags (cross-platform)
+GTEST_INCLUDE := $(if $(GTEST_INCLUDE_PATH),-I$(GTEST_INCLUDE_PATH),)
+GTEST_LIBS := $(if $(GTEST_LIB_PATH),-L$(GTEST_LIB_PATH),) -lgtest -lgtest_main -pthread
 
 # Single test executable
 TEST_TARGET := all_tests
