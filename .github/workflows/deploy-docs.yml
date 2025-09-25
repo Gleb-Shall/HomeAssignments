@@ -20,18 +20,16 @@ jobs:
     - name: Generate Documentation
       run: |
         echo "Current directory: $(pwd)"
+        echo "Checking if Doxyfile exists in root:"
+        ls -la Doxyfile
         echo "Contents of lab2 directory:"
         ls -la lab2/
-        echo "Checking if Doxyfile exists:"
-        ls -la lab2/Doxyfile
-        cd lab2
-        echo "After cd lab2, current directory: $(pwd)"
-        doxygen ./Doxyfile
+        doxygen Doxyfile
         
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develope'
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./lab2/docs/html
+        publish_dir: ./docs/html
         destination_dir: docs
