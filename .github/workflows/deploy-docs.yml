@@ -14,8 +14,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       
-    - name: Setup Doxygen
-      uses: mattnotmitt/doxygen-action@v1.1.0
+    - name: Install Doxygen
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y doxygen graphviz
         
     - name: Generate Documentation
       run: |
@@ -24,6 +26,8 @@ jobs:
         ls -la Doxyfile
         echo "Contents of lab2 directory:"
         ls -la lab2/
+        echo "Doxygen version:"
+        doxygen --version
         doxygen Doxyfile
         
     - name: Deploy to GitHub Pages
