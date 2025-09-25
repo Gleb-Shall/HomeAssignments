@@ -113,7 +113,7 @@ CITE_BIB_FILES         =
 #---------------------------------------------------------------------------
 # Input related configuration options
 #---------------------------------------------------------------------------
-INPUT                  = game/include/ game/src/
+INPUT                  = main.md game/include/ game/src/
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.c \
                          *.cc \
@@ -170,7 +170,7 @@ INPUT_FILTER           =
 FILTER_PATTERNS        = 
 FILTER_SOURCE_FILES    = NO
 FILTER_SOURCE_PATTERNS = 
-USE_MDFILE_AS_MAINPAGE = 
+USE_MDFILE_AS_MAINPAGE = main.md
 #---------------------------------------------------------------------------
 # Source browsing related configuration options
 #---------------------------------------------------------------------------
