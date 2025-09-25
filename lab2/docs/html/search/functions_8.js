@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['info_0',['Info',['../classLogger.html#af074f1bffc4ab6b57d033d9a505aabce',1,'Logger']]],
+  ['init_1',['Init',['../classGame.html#a555a9e4719fd49971765a2ab8b090b5c',1,'Game']]],
+  ['initializerandom_2',['InitializeRandom',['../classUtils.html#a5979d3472750a7d801bf0e6b09ff7186',1,'Utils']]],
+  ['isactive_3',['IsActive',['../classBattle.html#a3d8f87518473a719979819041e723838',1,'Battle']]],
+  ['isatmerchant_4',['IsAtMerchant',['../classWorld.html#ad816ceceebdf792eb6d6c71b4f5f54db',1,'World']]],
+  ['isatnpc_5',['IsAtNPC',['../classWorld.html#a3da195b0ccac095ee43706681e0691ad',1,'World']]],
+  ['iscompleted_6',['IsCompleted',['../classQuest.html#a513e475f438a408209d779f9806092eb',1,'Quest']]],
+  ['isdead_7',['IsDead',['../classEnemy.html#a68e4f5c80f1acaee03502f74cbd8d648',1,'Enemy']]],
+  ['isdefending_8',['IsDefending',['../classPlayer.html#a4acd0c43fca4bfc5c730f669e11ba3a1',1,'Player']]],
+  ['isdragondefeated_9',['IsDragonDefeated',['../classWorld.html#a71cab43dc3e7fb713ff771f46273a092',1,'World']]],
+  ['isexpired_10',['IsExpired',['../classPotion.html#a79e202b512b3fef34f5c8278c2379c7a',1,'Potion']]],
+  ['ismagical_11',['IsMagical',['../classEnemy.html#a5e27f308bb629a5d847578370f7d0541',1,'Enemy']]],
+  ['isnearenemy_12',['IsNearEnemy',['../classWorld.html#a77c7d9db44d3cda2bf072737e4df1453',1,'World']]],
+  ['isnearmerchant_13',['IsNearMerchant',['../classWorld.html#a3e58feeff5cd9e02d24bfdac12a490c1',1,'World']]],
+  ['isnearnpc_14',['IsNearNPC',['../classWorld.html#ae572eb96e458fac088cf08abb3f232c3',1,'World']]],
+  ['isnearsecondnpc_15',['IsNearSecondNPC',['../classWorld.html#a19a11c98249dca38e289db17c27a78bb',1,'World']]],
+  ['isoccupied_16',['IsOccupied',['../classMapTile.html#a7322d9757bd250bd61e088d521ff2f4f',1,'MapTile']]],
+  ['isstarted_17',['IsStarted',['../classQuest.html#adc916d8190d990de6b958cee8f6fe50b',1,'Quest']]],
+  ['iswalkable_18',['IsWalkable',['../classMapTile.html#aea493538a32e90ce7eb5c78713067a3c',1,'MapTile']]],
+  ['item_19',['Item',['../classItem.html#a9d6b0ad0989b729aa40705703ec87fd2',1,'Item']]]
+];

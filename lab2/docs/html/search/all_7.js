@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['handlecommand_0',['HandleCommand',['../classGame.html#a4810f1ef3d2a07c97c1e0c505c49986d',1,'Game']]],
+  ['handleinput_1',['HandleInput',['../classMenu.html#a0cb3596524ed7fd021f999860b563bf8',1,'Menu']]],
+  ['hasbuff_2',['HasBuff',['../classEnemy.html#a5cd1ffd2892199d6eb9d07ea2f3f20df',1,'Enemy::HasBuff()'],['../classPlayer.html#a7d9dc1b96f8e9ca84c1d0611d9a9603b',1,'Player::HasBuff()']]],
+  ['hasbuff_3',['hasBuff',['../classEnemy.html#aecef1cce6777c23ce1c1a8ab2a79357f',1,'Enemy']]],
+  ['haschoices_4',['HasChoices',['../classDialog.html#af009b880bdaf0e39ead57affcd985dd9',1,'Dialog']]],
+  ['haschoices_5',['hasChoices',['../classDialog.html#aed1f31ffd23323853e31e6f84cb0c7c5',1,'Dialog']]],
+  ['hasdragon_6',['HasDragon',['../classWorld.html#aad186113d321e78a24a4bc29a46f41bc',1,'World']]],
+  ['hasdragon_7',['hasDragon',['../classWorld.html#a7d4c4344d13f9c68aa2c6534dfcb7049',1,'World']]],
+  ['hasenemy_8',['HasEnemy',['../classWorld.html#aa15c83b035a11a5c0ec3b294146c4856',1,'World']]],
+  ['hasitem_9',['HasItem',['../classPlayer.html#aa4880019a8728c1877337ede56cf221e',1,'Player']]],
+  ['hasmerchant_10',['HasMerchant',['../classWorld.html#a25657c23d1e1eec41090b876a7387ce2',1,'World']]],
+  ['hasmerchant_11',['hasMerchant',['../classWorld.html#add01bef7c9d589edd1acb29f2be04d53',1,'World']]],
+  ['hasquest_12',['HasQuest',['../classNPC.html#aac28b1a48c4680357adb750d34964818',1,'NPC']]],
+  ['hasquest_13',['hasQuest',['../classNPC.html#a2533b6f7c8ab932c3b5001159eaca24a',1,'NPC']]],
+  ['hassecondnpc_14',['hasSecondNPC',['../classWorld.html#ad5a9901fd3885acf5ed6009404364b5c',1,'World']]],
+  ['heal_15',['Heal',['../classPlayer.html#aa8cd993b330fecc5f4d1d888b2d7e492',1,'Player']]],
+  ['height_16',['height',['../classWorld.html#ad2e63a39659cb400a619a0d16e3b4f9e',1,'World']]],
+  ['hp_17',['hp',['../classEnemy.html#a278d70100af07c946743db1b7a1a9f59',1,'Enemy::hp'],['../classPlayer.html#a2baad6b9a274417a7374baf11d5f723d',1,'Player::hp']]]
+];

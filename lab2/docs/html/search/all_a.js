@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['magic_0',['Magic',['../classMagic.html',1,'Magic'],['../classMagic.html#a12e9a77eae56826105471808e29c49c8',1,'Magic::Magic()']]],
+  ['magic_2ecpp_1',['Magic.cpp',['../Magic_8cpp.html',1,'']]],
+  ['magic_2eh_2',['Magic.h',['../Magic_8h.html',1,'']]],
+  ['main_3',['main',['../main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.cpp']]],
+  ['main_2ecpp_4',['main.cpp',['../main_8cpp.html',1,'']]],
+  ['mana_5',['mana',['../classPlayer.html#a9a64ebab916a7b25ecdec767ba111ca7',1,'Player']]],
+  ['manacost_6',['manaCost',['../classMagic.html#afcacb2c3774707f1901daad13c0be0d1',1,'Magic']]],
+  ['maptile_7',['MapTile',['../classMapTile.html',1,'MapTile'],['../classMapTile.html#a40647e6d567d577778e81a81b7047217',1,'MapTile::MapTile()']]],
+  ['maptile_2eh_8',['MapTile.h',['../MapTile_8h.html',1,'']]],
+  ['maxdurability_9',['maxDurability',['../classArmor.html#ab76162a5f240b634131b3d944318e86c',1,'Armor::maxDurability'],['../classWeapon.html#a7d6bfa6b854744fb91cd220c3e3ec59f',1,'Weapon::maxDurability']]],
+  ['maxhp_10',['maxHp',['../classPlayer.html#afbf6844bfe301d24748e5a5353345c0f',1,'Player']]],
+  ['maxmana_11',['maxMana',['../classPlayer.html#a7636c2b72ce39d18a5d17dcad0840b0c',1,'Player']]],
+  ['menu_12',['Menu',['../classMenu.html',1,'']]],
+  ['menu_2ecpp_13',['Menu.cpp',['../Menu_8cpp.html',1,'']]],
+  ['menu_2eh_14',['Menu.h',['../Menu_8h.html',1,'']]],
+  ['merchantx_15',['merchantX',['../classWorld.html#a0626b38d0aa729b8a3f6dc0de418045b',1,'World']]],
+  ['merchanty_16',['merchantY',['../classWorld.html#aa14725c8b3d6925f01d8171a81738b9b',1,'World']]],
+  ['move_17',['Move',['../classPlayer.html#a563ec479673de7f3a72ea43fdb2cd04e',1,'Player']]],
+  ['moveenemyrandom_18',['MoveEnemyRandom',['../classWorld.html#ae82262e05393c9a682f8d7ce54ec041a',1,'World']]],
+  ['moveenemytowardplayer_19',['MoveEnemyTowardPlayer',['../classWorld.html#ac1c1dd98a1f714c695671376d526baf8',1,'World']]],
+  ['moveextraenemies_20',['MoveExtraEnemies',['../classWorld.html#a3d3cf8730c62d78e2ae20681d9bf0563',1,'World']]],
+  ['moveplayer_21',['MovePlayer',['../classWorld.html#ac78a12ad33e2755981aa674908d5f352',1,'World']]]
+];
