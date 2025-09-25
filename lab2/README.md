@@ -23,4 +23,4 @@ project: ./game/bin/game
 test: ./game/tests/all_tests
 
 ## doxyfile
-https://gleb-shall.github.io/HomeAssignmen
+https://gleb-shall.github.io/HomeAssignments
