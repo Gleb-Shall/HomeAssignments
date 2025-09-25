@@ -9,7 +9,7 @@
 
 int main() {
     try {
-        std::string inputPath = "Mandrill.bmp";
+        std::string inputPath = "1718889054_sample_640×426.bmp";
 
         std::string outputPathRotatedClockwise = "Mandrill_rotated_clockwise.bmp";
         std::string outputPathFilteredClockwise = "Mandrill_filtered_clockwise.bmp";

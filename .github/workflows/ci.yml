@@ -99,7 +99,7 @@ jobs:
     
     - name: Upload build artifacts
       if: always()
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
         name: build-${{ matrix.os }}-${{ matrix.compiler }}
         path: |
