@@ -1,31 +1,50 @@
-name: Deploy Doxygen Documentation
+name: Deploy Documentation to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [ main, develope ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build-and-deploy:
+    name: Build and Deploy
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout
+    - name: Checkout code
       uses: actions/checkout@v4
-      
-    - name: Setup Doxygen
-      uses: mattnotmitt/doxygen-action@v1.1.0
-        
-    - name: Generate Documentation
+
+    - name: Install dependencies
       run: |
-        cd lab2
+        sudo apt-get update
+        sudo apt-get install -y g++ make doxygen graphviz
+
+    - name: Generate documentation
+      run: |
+        echo "Current directory: $(pwd)"
+        echo "Checking if Doxyfile exists:"
+        ls -la Doxyfile
+        echo "Doxygen version:"
+        doxygen --version
         doxygen Doxyfile
-        
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      if: github.ref == 'refs/heads/main'
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./lab2/docs/html
-        destination_dir: docs
+        path: docs/html
+
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
