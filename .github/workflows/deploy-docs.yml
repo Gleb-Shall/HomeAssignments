@@ -41,10 +41,8 @@ jobs:
       run: |
         # Create a deployment directory
         mkdir -p deployment
-        # Copy main index.html to root
-        cp index.html deployment/
-        # Copy documentation to docs subdirectory
-        cp -r docs/html deployment/docs
+        # Copy documentation directly to root
+        cp -r docs/html/* deployment/
         # Copy .nojekyll file
         cp .nojekyll deployment/ 2>/dev/null || echo "No .nojekyll file found"
         echo "Deployment structure:"
