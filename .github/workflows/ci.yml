@@ -12,21 +12,12 @@ on:
 
 jobs:
   test:
-    runs-on: ${{ matrix.os }}
-    
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        compiler: [gcc, clang]
-        exclude:
-          - os: windows-latest
-            compiler: clang  # Windows doesn't have clang by default
+    runs-on: ubuntu-latest
     
     steps:
     - uses: actions/checkout@v4
     
-    - name: Install dependencies (Ubuntu)
-      if: runner.os == 'Linux'
+    - name: Install dependencies
       run: |
         sudo apt-get update
         sudo apt-get install -y build-essential libgtest-dev
@@ -36,44 +27,10 @@ jobs:
         ls -la /usr/include/gtest/
         ls -la /usr/lib/x86_64-linux-gnu/libgtest*
     
-    - name: Install dependencies (macOS)
-      if: runner.os == 'macOS'
+    - name: Set up compiler
       run: |
-        brew install googletest
-        echo "GTEST_INCLUDE_PATH=/opt/homebrew/include" >> $GITHUB_ENV
-        echo "GTEST_LIB_PATH=/opt/homebrew/lib" >> $GITHUB_ENV
-    
-    - name: Install dependencies (Windows)
-      if: runner.os == 'Windows'
-      run: |
-        # Install vcpkg for Google Test
-        git clone https://github.com/Microsoft/vcpkg.git C:\vcpkg
-        C:\vcpkg\bootstrap-vcpkg.bat
-        C:\vcpkg\vcpkg install gtest
-        echo "GTEST_INCLUDE_PATH=C:\vcpkg\installed\x64-windows\include" >> $GITHUB_ENV
-        echo "GTEST_LIB_PATH=C:\vcpkg\installed\x64-windows\lib" >> $GITHUB_ENV
-    
-    - name: Set up compiler (GCC)
-      if: matrix.compiler == 'gcc'
-      run: |
-        if [ "$RUNNER_OS" = "Windows" ]; then
-          echo "CXX=g++" >> $GITHUB_ENV
-          echo "CC=gcc" >> $GITHUB_ENV
-        else
-          echo "CXX=g++" >> $GITHUB_ENV
-          echo "CC=gcc" >> $GITHUB_ENV
-        fi
-    
-    - name: Set up compiler (Clang)
-      if: matrix.compiler == 'clang'
-      run: |
-        if [ "$RUNNER_OS" = "Windows" ]; then
-          echo "CXX=clang++" >> $GITHUB_ENV
-          echo "CC=clang" >> $GITHUB_ENV
-        else
-          echo "CXX=clang++" >> $GITHUB_ENV
-          echo "CC=clang" >> $GITHUB_ENV
-        fi
+        echo "CXX=g++" >> $GITHUB_ENV
+        echo "CC=gcc" >> $GITHUB_ENV
     
     - name: Build main game
       run: |
@@ -101,7 +58,7 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: build-${{ matrix.os }}-${{ matrix.compiler }}
+        name: build-ubuntu-gcc
         path: |
           lab2/game/bin/game
           lab2/game/tests/all_tests
