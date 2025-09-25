@@ -1,9 +1,27 @@
+/**
+ * @file Player.cpp
+ * @brief Implementation of the player character class
+ * @author Gleb Shikunov
+ */
+
 #include "Player.h"
 #include "Enemy.h"
 #include <iostream>
 
+/**
+ * @brief Default constructor
+ * 
+ * Initializes player with default stats and empty inventory.
+ */
 Player::Player() : hp(100), maxHp(100), mana(50), maxMana(50), level(1), attackPower(15), defending(false), gold(100), equipped(""), equippedArmor(""), equippedArtifact(""), weaponUpgrades(0), armorUpgrades(0) {}
 
+/**
+ * @brief Attack an enemy
+ * @param enemy Reference to the enemy to attack
+ * 
+ * Performs an attack against the specified enemy, dealing damage
+ * based on player's attack power and weapon.
+ */
 void Player::Attack(Enemy& enemy) {
     std::cout << "Player attacks!" << std::endl;
     // Calculate damage including weapon bonus and upgrades

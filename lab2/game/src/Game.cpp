@@ -1,9 +1,21 @@
+/**
+ * @file Game.cpp
+ * @brief Implementation of the main game controller
+ * @author Gleb Shikunov
+ */
+
 #include "Game.h"
 #include "Utils.h"
 #include <iostream>
 #include <sstream>
 using namespace std;
 
+/**
+ * @brief Initialize the game
+ * 
+ * Sets up initial game state, creates player, generates world,
+ * and prepares all game systems for play.
+ */
 void Game::Init() {
     world.Generate();
     // preload shop goods (avoid initializer_list to sidestep ASan quirk)
@@ -19,12 +31,23 @@ void Game::Init() {
     cout << "Game started! Type 'help' for help." << endl;
 }
 
+/**
+ * @brief Show shop interface
+ * 
+ * Displays available items for purchase and handles shop interactions.
+ */
 void Game::ShowShop() {
     cout << "Merchant goods:" << endl;
     for (const auto& g : shopGoods) cout << "- " << g.first << " (" << g.second << "g)" << endl;
     cout << "Use: buy <item> | sell <item>" << endl;
 }
 
+/**
+ * @brief Buy an item from shop
+ * @param name Name of the item to purchase
+ * 
+ * Handles item purchase logic including gold deduction and inventory updates.
+ */
 void Game::BuyItem(const std::string& name) {
     for (const auto& g : shopGoods) {
         if (g.first == name) {
