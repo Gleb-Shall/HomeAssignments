@@ -19,8 +19,14 @@ jobs:
         
     - name: Generate Documentation
       run: |
+        echo "Current directory: $(pwd)"
+        echo "Contents of lab2 directory:"
+        ls -la lab2/
+        echo "Checking if Doxyfile exists:"
+        ls -la lab2/Doxyfile
         cd lab2
-        doxygen Doxyfile
+        echo "After cd lab2, current directory: $(pwd)"
+        doxygen ./Doxyfile
         
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
