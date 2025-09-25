@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RPG Adventure Game: Main Page</title>
+<title>RPG Adventure Game: RPG Adventure Game</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -88,10 +88,96 @@ $(function(){initNavTree('index.html','',''); });
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">RPG Adventure Game Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">RPG Adventure Game </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p><a class="anchor" id="md_main"></a></p>
+<p>A console-based role-playing game built in C++ with comprehensive object-oriented design.</p>
+<h1>Overview</h1>
+<p>This project is a text-based RPG game featuring:</p><ul>
+<li><b>Combat System</b>: Turn-based combat with weapons, armor, and magic</li>
+<li><b>Character Progression</b>: Leveling system with stats and abilities</li>
+<li><b>Inventory Management</b>: Equipment, potions, and item trading</li>
+<li><b>Quest System</b>: NPCs with quests and rewards</li>
+<li><b>World Exploration</b>: 2D grid-based world with various locations</li>
+</ul>
+<h1>Architecture</h1>
+<p>The game follows object-oriented programming principles with:</p><ul>
+<li><b>Inheritance</b>: Item hierarchy (Weapon, Armor, Potion inherit from Item)</li>
+<li><b>Composition</b>: Game contains Player, World, Battle systems</li>
+<li><b>Polymorphism</b>: Virtual methods for different item types</li>
+<li><b>Encapsulation</b>: Private data members with public interfaces</li>
+</ul>
+<h1>Key Classes</h1>
+<h2>Core Game Classes</h2>
+<ul>
+<li><b>Game</b>: Main controller managing the game loop and state</li>
+<li><b>Player</b>: Player character with stats, inventory, and abilities</li>
+<li><b>Enemy</b>: AI-controlled opponents with various abilities</li>
+<li><b>World</b>: 2D world management and entity positioning</li>
+</ul>
+<h2>Item System</h2>
+<ul>
+<li><b>Item</b>: Base class for all game items</li>
+<li><b>Weapon</b>: Combat weapons with damage and durability</li>
+<li><b>Armor</b>: Defensive equipment with protection values</li>
+<li><b>Potion</b>: Consumable items with various effects</li>
+</ul>
+<h2>Game Systems</h2>
+<ul>
+<li><b>Battle</b>: Turn-based combat management</li>
+<li><b>Inventory</b>: Item storage and management</li>
+<li><b>Quest</b>: Quest tracking and completion</li>
+<li><b>Shop</b>: Trading system for buying/selling items</li>
+</ul>
+<h1>Features</h1>
+<ul>
+<li><b>Combat Mechanics</b>: Attack, defend, use items, cast spells</li>
+<li><b>Character Stats</b>: HP, Mana, Level, Attack Power</li>
+<li><b>Equipment System</b>: Weapons, armor, and artifacts</li>
+<li><b>Magic System</b>: Spells with mana costs and cooldowns</li>
+<li><b>NPC Interactions</b>: Dialog system and quest giving</li>
+<li><b>Shop System</b>: Buy and sell items with gold economy</li>
+<li><b>Logging System</b>: Debug and game event logging</li>
+</ul>
+<h1>Getting Started</h1>
+<h2>Prerequisites</h2>
+<ul>
+<li>C++ compiler (g++, clang, or MSVC)</li>
+<li>Make utility</li>
+<li>Doxygen (for documentation generation)</li>
+</ul>
+<h2>Building</h2>
+<div class="fragment"><div class="line">cd lab2/game</div>
+<div class="line">make</div>
+</div><!-- fragment --><h2>Running</h2>
+<div class="fragment"><div class="line">./game</div>
+</div><!-- fragment --><h2>Generating Documentation</h2>
+<div class="fragment"><div class="line">cd lab2</div>
+<div class="line">doxygen Doxyfile</div>
+</div><!-- fragment --><h1>Documentation</h1>
+<p>Complete API documentation is available in the <span class="tt">docs/html/</span> directory. Open <span class="tt">docs/html/index.html</span> in a web browser to view the full documentation.</p>
+<h1>Project Structure</h1>
+<div class="fragment"><div class="line">lab2/</div>
+<div class="line">├── game/</div>
+<div class="line">│   ├── include/          # Header files (.h)</div>
+<div class="line">│   ├── src/              # Source files (.cpp)</div>
+<div class="line">│   ├── tests/            # Unit tests</div>
+<div class="line">│   └── Makefile          # Build configuration</div>
+<div class="line">├── docs/                 # Generated documentation</div>
+<div class="line">├── Architecture_description/  # Architecture diagrams</div>
+<div class="line">└── Doxyfile             # Documentation configuration</div>
+</div><!-- fragment --><h1>Author</h1>
+<p><b>Gleb Shikunov</b></p>
+<p>This project demonstrates advanced C++ programming concepts including:</p><ul>
+<li>Object-oriented design patterns</li>
+<li>Memory management</li>
+<li>Template usage</li>
+<li>Exception handling</li>
+<li>Documentation generation with Doxygen </li>
+</ul>
+</div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->
 </div><!-- doc-content -->
