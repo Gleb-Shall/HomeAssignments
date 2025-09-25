@@ -13,5 +13,6 @@ var searchData=
   ['restoremana_10',['RestoreMana',['../classPlayer.html#af8c9f421a33799fe881833801eec1b48',1,'Player']]],
   ['reward_11',['Reward',['../classNPC.html#af1b59f147e18742c99fedd4ee348dbb7',1,'NPC']]],
   ['reward_12',['reward',['../classQuest.html#ae797a0746eabb0d8430dcc0cd64b2480',1,'Quest']]],
-  ['run_13',['Run',['../classGame.html#a96341ca5b54d90adc3ecb3bf0bcd2312',1,'Game']]]
+  ['rpg_20adventure_20game_13',['RPG Adventure Game',['../index.html',1,'']]],
+  ['run_14',['Run',['../classGame.html#a96341ca5b54d90adc3ecb3bf0bcd2312',1,'Game']]]
 ];

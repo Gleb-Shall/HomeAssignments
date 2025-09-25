@@ -21,3 +21,6 @@ make
 # Run
 project: ./game/bin/game
 test: ./game/tests/all_tests
+
+## doxyfile
+https://glebsikunov.github.io/HomeAssignments/

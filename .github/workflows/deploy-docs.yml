@@ -1,0 +1,31 @@
+name: Deploy Doxygen Documentation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup Doxygen
+      uses: mattnotmitt/doxygen-action@v1.1.0
+        
+    - name: Generate Documentation
+      run: |
+        cd lab2
+        doxygen Doxyfile
+        
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./lab2/docs/html
+        destination_dir: docs

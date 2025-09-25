@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['game_0',['Game',['../classGame.html',1,'']]],
+  ['game_0',['Game',['../classGame.html',1,'Game'],['../index.html',1,'RPG Adventure Game']]],
   ['game_2ecpp_1',['Game.cpp',['../Game_8cpp.html',1,'']]],
   ['game_2eh_2',['Game.h',['../Game_8h.html',1,'']]],
   ['gamefinished_3',['gameFinished',['../classGame.html#a46b579dba97c342e628e6e06c58771ff',1,'Game']]],
