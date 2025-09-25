@@ -323,6 +323,32 @@ classDiagram
         +Clamp(int, int, int) int
     }
 
+    %% Система навыков и магии
+    class Skill {
+        -string name
+        -string description
+        -int cost
+        -int cooldown
+        +Skill(string, string, int)
+        +GetCost() int
+        +Upgrade()
+        +GetDescription() string
+        +Cooldown()
+        +GetName() string
+        +GetCooldown() int
+    }
+
+    class Magic {
+        -int manaCost
+        -int power
+        +Magic(string, string, int, int)
+        +Cast(Player, Enemy)
+        +GetManaCost() int
+        +Enchant(Item)
+        +Upgrade()
+        +Cooldown()
+    }
+
     %% Связи между классами
     Game --> Player : contains
     Game --> Enemy : contains
@@ -342,10 +368,17 @@ classDiagram
     Item <|-- Armor : inherits
     Item <|-- Potion : inherits
     
+    Skill <|-- Magic : inherits
+    
     Shop --> Item : manages
     NPC --> Item : receives
     NPC --> Quest : gives
     Quest --> Player : rewards
+    
+    Player --> Skill : uses
+    Player --> Magic : casts
+    Magic --> Item : enchants
+    Magic --> Enemy : targets
 ```
 
 ## Описание основных связей
@@ -357,14 +390,19 @@ classDiagram
 
 ### Наследование
 - `Weapon`, `Armor`, `Potion` наследуются от `Item`
-- Используется полиморфизм для унифицированной работы с предметами
+- `Magic` наследуется от `Skill`
+- Используется полиморфизм для унифицированной работы с предметами и навыками
 
 ### Ассоциация
 - `Battle` использует ссылки на `Player`, `Enemy`, `World`
 - `Shop` управляет коллекцией `Item*`
 - `NPC` может получать `Item` и давать `Quest`
+- `Player` использует `Skill` и `Magic` для специальных способностей
 
 ### Зависимости
 - `Player` зависит от `Item` для использования предметов
+- `Player` зависит от `Skill` и `Magic` для использования способностей
 - `Quest` зависит от `Player` для выдачи наград
 - `NPC` зависит от `Item` и `Quest` для взаимодействия
+- `Magic` зависит от `Item` для зачарования предметов
+- `Magic` зависит от `Enemy` для атаки противников

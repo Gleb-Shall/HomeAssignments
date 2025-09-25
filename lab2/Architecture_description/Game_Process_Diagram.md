@@ -1,6 +1,4 @@
-# UML Диаграмма игрового процесса
-
-## Диаграмма последовательности игрового процесса
+# UML Диаграмма последовательности игрового процесса
 
 ```mermaid
 sequenceDiagram
@@ -53,6 +51,13 @@ sequenceDiagram
                     else Использование предмета
                         B->>P: UseItem(item)
                         P->>P: Применение эффекта
+                    else Использование навыка
+                        B->>P: UseSkill(skill)
+                        P->>P: Применение навыка
+                    else Заклинание
+                        B->>P: CastSpell(magic)
+                        P->>E: Magic.Cast(Player, Enemy)
+                        E->>E: Получение урона от магии
                     end
                     
                     alt Враг жив
@@ -122,94 +127,6 @@ sequenceDiagram
     end
 ```
 
-## Диаграмма состояний игрока
-
-```mermaid
-stateDiagram-v2
-    [*] --> Idle: Игра начата
-    
-    Idle --> Moving: Команда "move"
-    Idle --> Talking: Команда "talk" (рядом с NPC)
-    Idle --> Shopping: Команда "shop" (рядом с торговцем)
-    Idle --> UsingItem: Команда "inventory" + выбор предмета
-    Idle --> [*]: Команда "quit"
-    
-    Moving --> Idle: Движение завершено
-    Moving --> InBattle: Враг рядом
-    
-    InBattle --> Attacking: Атака
-    InBattle --> Defending: Защита
-    InBattle --> UsingItem: Использование предмета
-    InBattle --> Idle: Бой завершен (победа/поражение)
-    
-    Attacking --> InBattle: Атака завершена
-    Defending --> InBattle: Защита завершена
-    UsingItem --> InBattle: Предмет использован
-    
-    Talking --> Idle: Диалог завершен
-    Shopping --> Idle: Торговля завершена
-    
-    UsingItem --> Idle: Предмет использован (вне боя)
-```
-
-## Диаграмма состояний врага
-
-```mermaid
-stateDiagram-v2
-    [*] --> Spawned: Враг создан
-    
-    Spawned --> Patrolling: Начало патрулирования
-    Patrolling --> Moving: Случайное движение
-    Patrolling --> Chasing: Игрок обнаружен
-    Patrolling --> Spawned: Враг удален
-    
-    Moving --> Patrolling: Движение завершено
-    Chasing --> InBattle: Игрок рядом
-    Chasing --> Patrolling: Игрок потерян
-    
-    InBattle --> Attacking: Атака
-    InBattle --> Defending: Защита
-    InBattle --> Thinking: Выбор действия
-    
-    Attacking --> InBattle: Атака завершена
-    Defending --> InBattle: Защита завершена
-    Thinking --> InBattle: Действие выбрано
-    
-    InBattle --> Defeated: HP = 0
-    Defeated --> [*]: Враг удален
-```
-
-## Диаграмма состояний предметов
-
-```mermaid
-stateDiagram-v2
-    [*] --> Created: Предмет создан
-    
-    Created --> InInventory: Добавлен в инвентарь
-    Created --> InShop: Добавлен в магазин
-    Created --> Dropped: Выброшен на землю
-    
-    InInventory --> Equipped: Экипирован
-    InInventory --> Used: Использован
-    InInventory --> Sold: Продан
-    
-    InShop --> InInventory: Куплен игроком
-    InShop --> Removed: Удален из магазина
-    
-    Equipped --> InInventory: Снят
-    Equipped --> Broken: Сломано (оружие/броня)
-    Equipped --> Used: Использован (зелье)
-    
-    Used --> Consumed: Потреблено (зелье)
-    Used --> InInventory: Возвращено в инвентарь
-    
-    Broken --> Repaired: Отремонтировано
-    Broken --> Discarded: Выброшено
-    
-    Consumed --> [*]: Удалено
-    Discarded --> [*]: Удалено
-    Removed --> [*]: Удалено
-```
 
 ## Описание игрового процесса
 
@@ -224,6 +141,8 @@ stateDiagram-v2
 - **Движение** - перемещение по карте с проверкой препятствий
 - **Бой** - пошаговая система с выбором действий
 - **Инвентарь** - управление предметами и их использование
+- **Навыки** - специальные способности игрока с кулдауном
+- **Заклинания** - магические способности, требующие ману
 - **Квесты** - получение и выполнение заданий
 - **Торговля** - покупка и продажа предметов
-- **Улучшения** - апгрейд оружия и брони
+- **Улучшения** - апгрейд оружия, брони, навыков и заклинаний
