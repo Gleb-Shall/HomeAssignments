@@ -1,14 +1,40 @@
+/**
+ * @file World.h
+ * @brief Game world and map management class
+ * @author Gleb Shikunov
+ */
+
 #pragma once
 #include <vector>
 #include <iostream>
 #include "Utils.h"
 #include "MapTile.h"
 
+/**
+ * @class World
+ * @brief Manages the game world, map, and entity positioning
+ * 
+ * This class handles the 2D game world, including map generation,
+ * player and enemy movement, NPC placement, and world state management.
+ */
 class World {
 public:
+    /**
+     * @brief Default constructor
+     * 
+     * Initializes world with default 10x10 grid and sets up initial positions
+     * for player, NPCs, and other entities.
+     */
     World() : width(10), height(10), playerX(0), playerY(0), enemyX(-1), enemyY(-1), enemyPresent(false), npcX(0), npcY(5), merchantX(0), merchantY(5), hasMerchant(false), secondNPCX(-1), secondNPCY(-1), hasSecondNPC(false), dragonX(-1), dragonY(-1), hasDragon(false), dragonDefeated(false) {
         grid.resize(height, std::vector<MapTile>(width));
     }
+    
+    /**
+     * @brief Generate the world map
+     * 
+     * Creates the initial world layout with walkable tiles and places
+     * the player and NPCs in their starting positions.
+     */
     void Generate() {
         for (int y = 0; y < height; ++y) {
             for (int x = 0; x < width; ++x) {
@@ -24,6 +50,13 @@ public:
         grid[npcY][npcX].SetOccupied(true); // нельзя зайти на клетку NPC
         // no merchant at start; appears after quest completion
     }
+    
+    /**
+     * @brief Draw the world map
+     * 
+     * Renders the current world state to the console, showing
+     * all tiles and entities in their current positions.
+     */
     void Draw() {
         for (int y = 0; y < height; ++y) {
             for (int x = 0; x < width; ++x) {
@@ -32,11 +65,32 @@ public:
             std::cout << '\n';
         }
     }
+    
+    /**
+     * @brief Update world state
+     * 
+     * Processes world updates including enemy movement and
+     * other dynamic world changes.
+     */
     void Update() {}
+    
+    /**
+     * @brief Get tile at specified coordinates
+     * @param x X coordinate
+     * @param y Y coordinate
+     * @return Pointer to MapTile, or nullptr if out of bounds
+     */
     MapTile* GetTile(int x, int y) {
         if (x < 0 || y < 0 || x >= width || y >= height) return nullptr;
         return &grid[y][x];
     }
+    
+    /**
+     * @brief Move player to new position
+     * @param dx X direction movement (-1, 0, or 1)
+     * @param dy Y direction movement (-1, 0, or 1)
+     * @return True if movement was successful
+     */
     bool MovePlayer(int dx, int dy) {
         int nx = playerX + dx;
         int ny = playerY + dy;
