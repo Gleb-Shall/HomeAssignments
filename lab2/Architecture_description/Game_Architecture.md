@@ -1,101 +1,186 @@
-# Архитектура игры "RPG Adventure"
+# Game Architecture "RPG Adventure"
 
-## Обзор
+## Overview
 
-Это консольная RPG игра, написанная на C++, которая представляет собой текстовую приключенческую игру с элементами боевой системы, инвентаря, квестов и торговли.
+This is a console RPG game written in C++ that represents a text-based adventure game with elements of combat system, inventory, quests, and trading.
 
-## Основные компоненты системы
+## Main System Components
 
-### 1. Игровой движок
-- **Game** - главный класс, управляющий игровым циклом
-- **World** - управление игровым миром и картой
-- **Battle** - система боевых действий
+### 1. Game Engine
+- **Game** - main class managing the game loop
+- **World** - game world and map management
+- **Battle** - combat system
 
-### 2. Игровые сущности
-- **Player** - игрок с характеристиками, инвентарем и способностями
-- **Enemy** - противники с различными характеристиками
-- **NPC** - неигровые персонажи для взаимодействия
+### 2. Game Entities
+- **Player** - player with characteristics, inventory, and abilities
+- **Enemy** - enemies with various characteristics
+- **NPC** - non-player characters for interaction
 
-### 3. Система предметов
-- **Item** - базовый класс для всех предметов
-- **Weapon** - оружие с уроном и прочностью
-- **Armor** - броня с защитой и прочностью
-- **Potion** - зелья с различными эффектами
+### 3. Item System
+- **Item** - base class for all items
+- **Weapon** - weapons with damage and durability
+- **Armor** - armor with defense and durability
+- **Potion** - potions with various effects
 
-### 4. Игровые системы
-- **Inventory** - управление инвентарем игрока
-- **Quest** - система квестов
-- **Shop** - торговая система
-- **Skill** - система навыков и способностей
-- **Magic** - магическая система (наследует от Skill)
+### 4. Game Systems
+- **Inventory** - player inventory management
+- **Quest** - quest system
+- **Shop** - trading system
+- **Skill** - skills and abilities system
+- **Magic** - magic system (inherits from Skill)
 
-### 5. Вспомогательные системы
-- **Logger** - система логирования
-- **Menu** - пользовательский интерфейс
-- **Dialog** - система диалогов
-- **Utils** - утилитарные функции
+### 5. Auxiliary Systems
+- **Logger** - logging system
+- **Menu** - user interface
+- **Dialog** - dialog system
+- **Utils** - utility functions
 
-## Архитектурные паттерны
+## Architectural Patterns
 
-### 1. Наследование
-Используется для создания иерархии предметов и способностей:
-- `Item` (базовый класс)
-  - `Weapon` (оружие)
-  - `Armor` (броня)
-  - `Potion` (зелья)
-- `Skill` (базовый класс для способностей)
-  - `Magic` (заклинания)
+### 1. Inheritance
+Used to create hierarchies of items and abilities:
+- `Item` (base class)
+  - `Weapon` (weapons)
+  - `Armor` (armor)
+  - `Potion` (potions)
+- `Skill` (base class for abilities)
+  - `Magic` (spells)
 
-### 2. Композиция
-- `Game` содержит экземпляры `Player`, `Enemy`, `Battle`, `World`
-- `Player` содержит `Inventory` и коллекции предметов
-- `World` содержит двумерную сетку `MapTile`
+### 2. Composition
+- `Game` contains instances of `Player`, `Enemy`, `Battle`, `World`
+- `Player` contains `Inventory` and item collections
+- `World` contains a two-dimensional grid of `MapTile`
 
-### 3. Полиморфизм
-- Метод `Use()` в классе `Item` переопределяется в наследниках
-- Виртуальные методы `Clone()` для создания копий предметов
+### 3. Polymorphism
+- `Use()` method in `Item` class is overridden in derived classes
+- Virtual `Clone()` methods for creating item copies
 
-## Игровой процесс
+## Game Process
 
-### Основной цикл
-1. **Инициализация** - создание игрока, мира, загрузка данных
-2. **Игровой цикл**:
-   - Обработка команд пользователя
-   - Обновление состояния игры
-   - Отрисовка интерфейса
-3. **Завершение** - сохранение прогресса, выход
+### Main Loop
+1. **Initialization** - creating player, world, loading data
+2. **Game Loop**:
+   - Processing user commands
+   - Updating game state
+   - Rendering interface
+3. **Completion** - saving progress, exit
 
-### Системы взаимодействия
-- **Движение** - перемещение по карте
-- **Бой** - пошаговая боевая система
-- **Навыки** - использование специальных способностей
-- **Заклинания** - применение магических способностей
-- **Торговля** - покупка/продажа предметов
-- **Квесты** - выполнение заданий от NPC
-- **Инвентарь** - управление предметами
+### Interaction Systems
+- **Movement** - moving around the map
+- **Combat** - turn-based combat system
+- **Skills** - using special abilities
+- **Spells** - applying magical abilities
+- **Trading** - buying/selling items
+- **Quests** - completing NPC tasks
+- **Inventory** - item management
 
-## Технические особенности
 
-### Управление памятью
-- Использование умных указателей для предметов
-- RAII принцип для управления ресурсами
-- Виртуальные деструкторы для полиморфных объектов
+## Detailed Class Description
 
-### Обработка ошибок
-- Проверка границ массивов
-- Валидация пользовательского ввода
-- Обработка исключительных ситуаций
+### Main Game Classes
 
-### Производительность
-- Эффективные алгоритмы поиска
-- Минимизация копирования объектов
-- Оптимизированные структуры данных
+#### Game
+Main game controller managing the entire game process:
+- **Main methods**: `Init()`, `Run()`, `Render()`, `Update()`, `Exit()`
+- **State management**: tracks combat state, active quests, game completion
+- **Command processing**: `HandleCommand()`, `PrintHelp()`, `ShowShop()`
+- **Contains**: instances of Player, Enemy, Battle, World
 
-## Расширяемость
+#### Player
+Central player entity with full set of characteristics:
+- **Main characteristics**: HP, mana, level, attack, defense
+- **Economy**: gold, inventory, equipped weapons and armor
+- **Abilities**: skills, spells, buffs
+- **Combat methods**: `Attack()`, `Defend()`, `TakeDamage()`, `Heal()`
+- **Item management**: `UseItem()`, `Equip()`, `AddItem()`, `RemoveItemByName()`
+- **Upgrade system**: `UpgradeWeapon()`, `UpgradeArmor()`
 
-Архитектура позволяет легко добавлять:
-- Новые типы предметов
-- Дополнительные способности игрока
-- Новые типы врагов
-- Дополнительные игровые механики
-- Различные локации и карты
+#### Enemy
+Enemies with various characteristics and behavior:
+- **Main characteristics**: HP, attack, defense
+- **States**: defense, magical abilities, buffs
+- **Combat methods**: `Attack()`, `Defend()`, `Think()` (AI)
+- **Management**: `TakeDamage()`, `DropLoot()`, `Reset()`
+
+#### Battle
+Turn-based combat system:
+- **Combat management**: `Start()`, `End()`, `IsActive()`
+- **Turns**: `PlayerTurn()`, `EnemyTurn()`
+- **Result checking**: `CheckWin()`
+- **Participants**: references to Player, Enemy, World
+
+#### World
+Game world and map management:
+- **Map**: 10x10 two-dimensional grid with tiles
+- **Movement**: `MovePlayer()`, `MoveEnemyTowardPlayer()`, `MoveEnemyRandom()`
+- **Object spawning**: `SpawnEnemy()`, `SpawnExtraEnemy()`, `SpawnDragon()`
+- **Checks**: `IsNearEnemy()`, `IsAtNPC()`, `IsAtMerchant()`
+- **NPCs and merchants**: position and activation management
+
+### Item System
+
+#### Item (Base Class)
+Abstract base class for all items:
+- **Main properties**: name, description, value
+- **Virtual methods**: `Use()`, `GetName()`, `GetDescription()`, `Clone()`
+- **Polymorphism**: allows unified work with different item types
+
+#### Weapon
+Weapons with damage and durability:
+- **Specific properties**: damage, durability, max durability
+- **Methods**: `GetDamage()`, `Upgrade()`, `Break()`, `Repair()`
+- **Inheritance**: from Item with `Use()` and `Clone()` overrides
+
+#### Armor
+Armor with defense and durability:
+- **Specific properties**: defense, durability, max durability
+- **Methods**: `GetDefense()`, `Upgrade()`, `Break()`, `Repair()`
+- **Inheritance**: from Item with `Use()` and `Clone()` overrides
+
+#### Potion
+Potions with various effects:
+- **Specific properties**: effect, power, expiration
+- **Methods**: `Drink()`, `GetEffect()`, `IsExpired()`
+- **Inheritance**: from Item with `Use()` and `Clone()` overrides
+
+### Ability System
+
+#### Skill
+Base class for skills and abilities:
+- **Main properties**: name, description, cost, cooldown
+- **Methods**: `GetCost()`, `Upgrade()`, `Cooldown()`
+- **Management**: tracking availability and cooldown
+
+#### Magic
+Spells inheriting from Skill:
+- **Additional properties**: mana cost, power
+- **Methods**: `Cast()`, `GetManaCost()`, `Enchant()`
+- **Specificity**: requires mana, can enchant items
+
+### Interaction System
+
+#### NPC
+Non-player characters for dialogs and quests:
+- **Main properties**: name, dialog, quest state
+- **Methods**: `Talk()`, `GiveQuest()`, `ReceiveItem()`, `Reward()`
+- **Quest management**: `HasQuest()`, `CompleteQuest()`
+
+#### Quest
+Quest and task system:
+- **Main properties**: description, reward, completion state
+- **Methods**: `Complete()`, `IsStarted()`, `IsCompleted()`
+- **Integration**: works with Player for reward distribution
+
+#### Shop
+Trading system:
+- **Item management**: `AddItem()`, `RemoveItem()`, `ListGoods()`
+- **Trading**: `Buy()`, `Sell()`
+- **Storage**: collection of Item pointers
+
+### Auxiliary Systems
+
+#### MapTile
+Individual game map tiles:
+- **Properties**: type, walkability, occupancy
+- **Methods**: `SetType()`, `IsWalkable()`, `IsOccupied()`
+
